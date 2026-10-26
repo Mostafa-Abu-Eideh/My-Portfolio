@@ -1,0 +1,116 @@
+/* --x (seam position, 0–1) is written here by useSeam and inherited by the name and role lines. */
+.hero {
+  --x: .78;
+  padding-block: clamp(24px, 5vw, 56px) clamp(56px, 8vw, 112px);
+}
+
+/* ---------- the split name ---------- */
+.kinetic-name {
+  --w: 420; /* font weight, written by useSeam */
+  position: relative;
+  height: clamp(150px, 27vw, 400px);
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.kinetic-name__layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-weight: var(--w);
+  pointer-events: none;
+}
+
+.kinetic-name__layer--en {
+  justify-content: flex-start;
+  font-size: clamp(70px, 19.5vw, 292px);
+  letter-spacing: -.045em;
+  line-height: 1;
+  clip-path: inset(0 calc((1 - var(--x)) * 100%) 0 0);
+}
+
+.kinetic-name__layer--ar {
+  justify-content: flex-end;
+  font-size: clamp(80px, 21vw, 316px);
+  line-height: 1.2;
+  color: var(--gold);
+  clip-path: inset(0 0 0 calc(var(--x) * 100%));
+  transform: translateY(-.08em);
+}
+
+.kinetic-name__seam {
+  position: absolute;
+  top: -4%;
+  bottom: -4%;
+  left: calc(var(--x) * 100%);
+  width: 2px;
+  margin-left: -1px;
+  background: var(--sage);
+  pointer-events: none;
+}
+.kinetic-name__seam::before,
+.kinetic-name__seam::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 9px;
+  height: 9px;
+  margin-left: -4.5px;
+  border-radius: 50%;
+  background: var(--sage);
+}
+.kinetic-name__seam::before { top: -4px; }
+.kinetic-name__seam::after { bottom: -4px; }
+
+/* ---------- role lines ---------- */
+.hero__roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: clamp(16px, 2.5vw, 32px);
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 400;
+}
+.hero__role { max-width: 30ch; }
+.hero__role--en { opacity: calc(.28 + .72 * var(--x)); }
+.hero__role--ar {
+  justify-self: end;
+  text-align: right;
+  direction: rtl;
+  color: var(--gold);
+  opacity: calc(.28 + .72 * (1 - var(--x)));
+}
+
+/* ---------- actions and status ---------- */
+.hero__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 28px;
+  margin-top: clamp(40px, 6vw, 72px);
+}
+.hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.hero__status { display: flex; align-items: center; gap: 10px; color: var(--moss); font-size: 16px; }
+.hero__status::before {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.hero__hint { margin-inline-start: auto; color: var(--moss); font-size: 15px; }
+
+@media (max-width: 820px) {
+  .hero__hint { margin-inline-start: 0; width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .hero__roles { grid-template-columns: 1fr; gap: 10px; }
+}

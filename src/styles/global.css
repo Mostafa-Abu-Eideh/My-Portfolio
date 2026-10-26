@@ -1,0 +1,74 @@
+/* ---------- theme tokens ----------
+   Pine & olive gold is the base; Black & gold overrides it.
+   Every component reads these variables, so switching theme is one attribute on <html>. */
+:root {
+  --pine: #123B33;
+  --pine-deep: #0D2E28;
+  --sage: #EAF2E3;
+  --moss: #93B09C;
+  --dim: #4F7465;
+  --gold: #F2C14E;
+  --line: rgba(234, 242, 227, .16);
+  --pad: clamp(20px, 5vw, 64px);
+  --max: 1312px;
+}
+
+html[data-theme='black'] {
+  --pine: #0E0F0E;
+  --pine-deep: #070807;
+  --sage: #EDEDE6;
+  --moss: #9C9E95;
+  --dim: #4E504B;
+  --gold: #F2C14E;
+  --line: rgba(237, 237, 230, .13);
+}
+
+/* ---------- base ---------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  background: var(--pine);
+  color: var(--sage);
+  font-family: 'Readex Pro', system-ui, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  transition: background-color .45s ease, color .45s ease;
+}
+
+body { font-size: 18px; line-height: 1.55; overflow-x: hidden; }
+:lang(ar) { line-height: 1.8; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 2px; }
+::selection { background: var(--gold); color: var(--pine); }
+
+/* ---------- shared utilities ---------- */
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Elements whose layout is about the two scripts themselves stay left-to-right in both languages. */
+.ltr-fixed { direction: ltr; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid var(--sage);
+  background: none;
+  color: var(--sage);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.btn--solid { background: var(--sage); color: var(--pine); }
+.btn:hover { background: var(--gold); border-color: var(--gold); color: var(--pine); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}

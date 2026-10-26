@@ -1,0 +1,32 @@
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: var(--pine-deep);
+  pointer-events: none;
+}
+.curtain--active { display: flex; }
+
+/* the leading edge of the panel */
+.curtain::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gold);
+}
+.curtain--to-ar::before { left: 0; }
+.curtain--to-en::before { right: 0; }
+
+.curtain b {
+  color: var(--gold);
+  font-size: clamp(80px, 20vw, 300px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.03em;
+}
+.curtain b:lang(ar) { letter-spacing: 0; }

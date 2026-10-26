@@ -1,0 +1,16 @@
+.footer {
+  padding-block: 28px 40px;
+  border-top: 1px solid var(--line);
+  color: var(--moss);
+  font-size: 15px;
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  direction: ltr;
+}
+
+.footer__copyright { color: var(--dim); }

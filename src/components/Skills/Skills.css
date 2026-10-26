@@ -1,0 +1,33 @@
+.skills { display: grid; }
+
+.skills__row {
+  display: grid;
+  grid-template-columns: minmax(150px, 220px) 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding-block: clamp(18px, 2.4vw, 30px);
+  border-bottom: 1px solid var(--line);
+}
+.skills__row:first-child { border-top: 1px solid var(--line); }
+
+.skills__row dt { color: var(--moss); font-size: 16px; }
+
+.skills__row dd {
+  font-size: clamp(26px, 3.9vw, 56px);
+  line-height: 1.22;
+  letter-spacing: -.025em;
+}
+
+.skills__row dd span {
+  display: inline-block;
+  margin-inline-end: .42em;
+  transition: font-weight .35s, color .25s;
+}
+.skills__row dd span:nth-child(odd) { font-weight: 600; }
+.skills__row dd span:nth-child(even) { font-weight: 200; }
+.skills__row dd span:hover { color: var(--gold); font-weight: 700; }
+.skills__row dd span:lang(ar) { letter-spacing: 0; }
+
+@media (max-width: 820px) {
+  .skills__row { grid-template-columns: 1fr; gap: 6px; }
+}

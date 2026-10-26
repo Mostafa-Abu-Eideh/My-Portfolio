@@ -1,0 +1,38 @@
+.section {
+  padding-block: clamp(64px, 9vw, 128px);
+  border-top: 1px solid var(--line);
+}
+
+.section__heading {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(16px, 3vw, 40px);
+  margin-bottom: clamp(40px, 6vw, 80px);
+  font-size: clamp(36px, 6.6vw, 96px);
+  line-height: 1.1;
+  letter-spacing: -.03em;
+}
+
+/* the hairline between the two words */
+.section__heading::before {
+  content: '';
+  grid-column: 2;
+  grid-row: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.section__heading span {
+  grid-row: 1;
+  font-weight: 180;
+  color: var(--dim);
+  transition: font-weight .6s, color .6s;
+}
+.section__heading span:lang(en) { grid-column: 1; }
+.section__heading span:lang(ar) { grid-column: 3; letter-spacing: 0; line-height: 1.5; }
+.section__heading span.is-active { font-weight: 600; color: var(--sage); }
+
+@media (max-width: 640px) {
+  .section__heading { font-size: clamp(30px, 9vw, 44px); }
+}

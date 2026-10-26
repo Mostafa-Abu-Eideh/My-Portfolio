@@ -1,0 +1,29 @@
+.contact__lede {
+  max-width: 40ch;
+  margin-bottom: clamp(20px, 3vw, 36px);
+  color: var(--moss);
+  font-size: clamp(18px, 1.8vw, 22px);
+}
+
+.email-link {
+  display: block;
+  padding-block: .12em;
+  direction: ltr;
+  text-align: left;
+  font-size: clamp(18px, 5.8vw, 86px);
+  font-weight: 250;
+  line-height: 1.1;
+  letter-spacing: -.03em;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+html[dir='rtl'] .email-link { text-align: right; }
+
+.email-link span {
+  transition: font-weight .4s cubic-bezier(.3, 0, .2, 1), color .4s;
+  transition-delay: calc(var(--i) * 16ms);
+}
+.email-link:hover span,
+.email-link:focus-visible span { font-weight: 680; color: var(--gold); }
+
+.contact__links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(28px, 4vw, 48px); }

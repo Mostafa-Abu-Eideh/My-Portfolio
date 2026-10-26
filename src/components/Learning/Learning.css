@@ -1,0 +1,8 @@
+.learning {
+  max-width: 28em;
+  font-size: clamp(24px, 3.1vw, 42px);
+  line-height: 1.32;
+  letter-spacing: -.012em;
+}
+.learning:lang(ar) { line-height: 1.7; letter-spacing: 0; }
+.learning b { font-weight: 600; }
